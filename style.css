@@ -1,0 +1,1097 @@
+:root {
+    --bg-color: #FAFAFA;
+    --card-bg: #FFFFFF;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --gold: #D4AF37;
+    --gold-light: #F9F3E0;
+    --rose-burnt: #B35454;
+    --rose-light: #FCECEC;
+    --green-whatsapp: #00ff88;
+    --green-light: rgba(0, 255, 136, 0.10);
+    --instagram-color: #C13584;
+    --instagram-theme: #D67D7D;
+    --instagram-light: #FFF0F5;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.1);
+    --border-radius: 16px;
+    --font-main: 'Poppins', sans-serif;
+    --nav-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    padding-bottom: 40px;
+    line-height: 1.5;
+}
+
+/* Header */
+.app-header {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-primary);
+}
+
+.logo-icon {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+.app-header h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container {
+    width: 100%;
+}
+
+/* Factory List */
+.factory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Card Styles */
+.factory-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.factory-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Scroll Animation Classes */
+.factory-card.scroll-hidden {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.factory-card.scroll-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Card Body */
+.card-body {
+    padding: 24px;
+}
+
+/* Card Profile Header - Updated for Layout */
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.favorite-icon {
+    color: #ccc;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    align-self: flex-end;
+}
+
+.favorite-icon:hover,
+.favorite-icon.active {
+    color: #ff4081;
+    font-weight: 900;
+}
+
+.profile-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    color: #bbb;
+    font-size: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.factory-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.factory-code {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: #f0f0f0;
+    color: #666;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+}
+
+/* Action Buttons - Vertical Layout */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-whatsapp {
+    background-color: var(--green-light);
+    color: var(--green-whatsapp);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+}
+
+.btn-instagram {
+    background-color: var(--instagram-light);
+    color: #C2185B;
+    border: 1px solid rgba(193, 53, 132, 0.2);
+}
+
+.btn-location {
+    background-color: #E3F2FD;
+    color: #1565C0;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .factory-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .main-content {
+        max-width: 1000px;
+    }
+}
+
+/* Search Bar Styles */
+.search-container {
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-soft);
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.search-box input:focus {
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* View Toggling Utilities */
+.hidden {
+    display: none !important;
+}
+
+/* Animation for view switching */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Suggest Card */
+.suggest-card-sticky-wrap {
+    position: sticky;
+    top: 72px;
+    z-index: 85;
+    margin-bottom: 20px;
+}
+
+.suggest-card {
+    background: linear-gradient(180deg, #fff6f9 0%, #fff1f6 100%);
+    border: 1px solid rgba(252, 70, 149, 0.16);
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    padding: 16px 16px 18px;
+}
+
+.suggest-card-copy {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.suggest-card-icon {
+    color: #fc6ca7;
+    font-size: 1.35rem;
+    line-height: 1;
+    padding-top: 2px;
+}
+
+.suggest-card-text h2 {
+    font-size: 1.02rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #2f2f2f;
+    margin-bottom: 4px;
+}
+
+.suggest-card-text p {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.suggest-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: min(82%, 270px);
+    margin: 0 auto;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 999px;
+    color: #fff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: linear-gradient(180deg, #ff89b9 0%, #fc5b9f 58%, #f54290 100%);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.45), inset 0 -2px 0 rgba(214, 36, 112, 0.28), 0 8px 18px rgba(252, 70, 149, 0.28);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.suggest-card-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    pointer-events: none;
+}
+
+.suggest-card-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), inset 0 -2px 0 rgba(214, 36, 112, 0.3), 0 10px 20px rgba(252, 70, 149, 0.32);
+}
+
+.suggest-card-btn .icon {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 16px;
+        padding: 12px 18px;
+    }
+
+    .suggest-card-sticky-wrap {
+        top: 68px;
+    }
+
+    .suggest-card {
+        padding: 15px 14px 17px;
+    }
+
+    .suggest-card-btn {
+        width: min(84%, 280px);
+        padding: 11px 18px;
+    }
+}
+
+
+/* Trigger dos achados */
+.achados-trigger-wrap {
+    margin: 0 0 18px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.achados-trigger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 52px;
+    border: 1px solid rgba(252, 70, 149, 0.16);
+    background: linear-gradient(180deg, #fff6f9 0%, #fff1f6 100%);
+    color: #fc4695;
+    font-family: var(--font-main);
+    font-size: 0.98rem;
+    font-weight: 700;
+    border-radius: 18px;
+    padding: 15px 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.achados-trigger-btn:hover,
+.achados-trigger-btn:active,
+.achados-trigger-btn:focus {
+    transform: none;
+    outline: none;
+}
+
+/* Modal dos achados */
+.achados-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 5000;
+}
+
+.achados-modal.is-open {
+    display: block;
+}
+
+.achados-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(2px);
+}
+
+.achados-modal-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 430px);
+    height: 192vh;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+        0 24px 70px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(252, 70, 149, 0.22),
+        inset 0 0 18px rgba(252, 70, 149, 0.18),
+        0 0 24px rgba(252, 70, 149, 0.16);
+    border: 1px solid rgba(252, 70, 149, 0.22);
+}
+
+.achados-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 999px;
+    background: #fc4695;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(252,70,149,0.35), 0 0 18px rgba(252,70,149,0.28);
+    cursor: pointer;
+}
+
+.achados-modal-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #fff;
+}
+
+@media (max-width: 767px) {
+    .achados-modal-dialog {
+        width: min(94vw, 420px);
+        height: 92vh;
+        border-radius: 22px;
+    }
+}
+
+    .achados-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+
+/* POP-UP ABERTO SEM VERDE */
+
+.achados-modal .achados-modal-dialog{border:1px solid rgba(252,70,149,.22)!important;box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 0 0 1px rgba(252,70,149,.16),0 0 30px rgba(252,70,149,.12)!important;}
+
+/* SHADOW CLEAN NO MODAL - sem contorno neon no popup externo */
+.achados-modal .achados-modal-dialog,
+.achados-modal-dialog{
+    border:0!important;
+    box-shadow:0 24px 70px rgba(0,0,0,.30)!important;
+}
+.achados-modal .achados-modal-close,
+.achados-modal-close{
+    background:rgba(255,255,255,.10)!important;
+    color:#ffffff!important;
+    box-shadow:0 10px 24px rgba(0,0,0,.28),0 8px 22px rgba(255,255,255,.06)!important;
+}
+
+/* AJUSTE FINAL: X DO POP-UP ROSA */
+.achados-modal.is-open .achados-modal-close,
+.achados-modal .achados-modal-close,
+.achados-modal-close {
+    background: #fc4695 !important;
+    color: #ffffff !important;
+    box-shadow:
+        0 10px 24px rgba(252,70,149,.35),
+        0 0 18px rgba(252,70,149,.28) !important;
+}
+
+.achados-modal.is-open .achados-modal-close:hover,
+.achados-modal .achados-modal-close:hover,
+.achados-modal-close:hover {
+    background: #fc4695 !important;
+    color: #ffffff !important;
+}
+
+
+/* TEMA DINÂMICO DO POP-UP EXTERNO (X e container) */
+:root{
+    --popup-accent:#fc4695;
+    --popup-accent-light:#ff78ac;
+    --popup-accent-dark:#be2369;
+    --popup-accent-rgb:252, 70, 149;
+}
+.achados-modal.is-open .achados-modal-close,.achados-modal .achados-modal-close,.achados-modal-close {
+    background: var(--popup-accent) !important;
+    color: #ffffff !important;
+    box-shadow:0 10px 24px rgba(var(--popup-accent-rgb), .45),0 0 18px rgba(var(--popup-accent-rgb), .35) !important;
+}
+.achados-modal.is-open .achados-modal-close:hover,.achados-modal .achados-modal-close:hover,.achados-modal-close:hover {
+    background: var(--popup-accent-light) !important;
+    color: #ffffff !important;
+}
+.achados-modal .achados-modal-dialog,.achados-modal-dialog{
+    box-shadow:0 24px 70px rgba(0,0,0,.30),0 0 24px rgba(var(--popup-accent-rgb),.12)!important;
+}
+
+
+/* === COR PADRÃO FIXA: detalhes em rosa === */
+:root {
+  --theme-color: #fc4695 !important;
+  --tema-color: #fc4695 !important;
+  --accent-color: #fc4695 !important;
+  --primary-color: #fc4695 !important;
+  --brand-color: #fc4695 !important;
+  --popup-theme-color: #fc4695 !important;
+}
+
+button,
+.cta-button,
+.buy-button,
+.comprar-btn,
+.btn-comprar,
+.close-button,
+.close-btn,
+.popup-close,
+.modal-close {
+  border-color: #fc4695 !important;
+}
+
+.cta-button,
+.buy-button,
+.comprar-btn,
+.btn-comprar {
+  background: #fc4695 !important;
+  box-shadow: 0 10px 0 rgba(190, 35, 105, 0.85), 0 0 22px rgba(252, 70, 149, 0.38) !important;
+  color: #ffffff !important;
+}
+
+.close-button,
+.close-btn,
+.popup-close,
+.modal-close {
+  background: #fc4695 !important;
+  color: #ffffff !important;
+}
+
+.close-button *,
+.close-btn *,
+.popup-close *,
+.modal-close * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.theme-border,
+.card,
+.product-card,
+.popup-card,
+.modal-card {
+  border-color: #fc4695 !important;
+}
+
+.theme-text,
+.factory-name,
+.nome-fabrica,
+.highlight-pink {
+  color: #fc4695 !important;
+}
+
+
+
+
+
+/* === FIX FINAL: botão fechar do pop-up === */
+.achados-modal .achados-modal-close,
+.achados-modal-close {
+    background: #fc4695 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+    box-shadow: 0 10px 24px rgba(252, 70, 149, .45), 0 0 18px rgba(252, 70, 149, .35) !important;
+}
+
+.achados-modal .achados-modal-close *,
+.achados-modal-close * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none !important;
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   POPUP EXTERNO — overlay e moldura em tema claro premium
+   ========================================================= */
+.achados-modal-backdrop{
+  background:rgba(255,247,248,.76)!important;
+  backdrop-filter:blur(8px) saturate(1.08)!important;
+}
+.achados-modal-dialog{
+  width:min(94vw,430px)!important;
+  height:min(92vh,920px)!important;
+  background:#fff7f8!important;
+  border:1px solid #f3d9e3!important;
+  border-radius:26px!important;
+  box-shadow:0 30px 80px rgba(147,73,99,.22),0 2px 10px rgba(147,73,99,.08)!important;
+  overflow:hidden!important;
+}
+.achados-modal-frame{
+  background:#fff7f8!important;
+}
+.achados-modal .achados-modal-close,.achados-modal-close{
+  background:linear-gradient(180deg,#ff78ac 0%,#fc4695 100%)!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  border:1px solid rgba(255,255,255,.42)!important;
+  box-shadow:0 12px 26px rgba(252,70,149,.26),inset 0 1px 0 rgba(255,255,255,.35)!important;
+  text-shadow:none!important;
+}
+.achados-modal .achados-modal-close:hover,.achados-modal-close:hover{
+  background:linear-gradient(180deg,#ff86b6 0%,#fc4695 100%)!important;
+  transform:scale(1.03)!important;
+}
+@media (max-width:767px){
+  .achados-modal-dialog{
+    width:min(94vw,420px)!important;
+    height:92vh!important;
+    border-radius:22px!important;
+  }
+  .achados-modal .achados-modal-close,.achados-modal-close{
+    width:42px!important;
+    height:42px!important;
+  }
+}
+
+/* =========================================================
+   MODAL EXTERNO — fundo branco combinando com cards rosa
+   ========================================================= */
+.achados-modal-backdrop{
+  background:rgba(255,255,255,.82)!important;
+  backdrop-filter:blur(8px) saturate(1.05)!important;
+}
+.achados-modal-dialog{
+  background:#ffffff!important;
+  border:1px solid #ffe0eb!important;
+  box-shadow:0 30px 80px rgba(79,42,58,.18),0 2px 10px rgba(79,42,58,.08)!important;
+}
+.achados-modal-frame{
+  background:#ffffff!important;
+}
+.achados-modal .achados-modal-close,.achados-modal-close{
+  background:#fc4695!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  box-shadow:0 12px 26px rgba(252,70,149,.26),inset 0 1px 0 rgba(255,255,255,.35)!important;
+}
+.achados-modal .achados-modal-close *,.achados-modal-close *{
+  color:#fff!important;
+  stroke:#fff!important;
+}
+
+
+/* === CORREÇÃO FINAL DO POPUP EXTERNO: moldura branca === */
+.achados-modal-backdrop{background:rgba(255,255,255,.72) !important;backdrop-filter:blur(8px) saturate(1.06) !important;}
+.achados-modal-dialog{
+  background:#ffffff !important;
+  border:1px solid #ffd3e4 !important;
+  box-shadow:0 30px 80px rgba(79,42,58,.18),0 2px 10px rgba(79,42,58,.08) !important;
+}
+.achados-modal-frame{background:#ffffff !important;}
+.achados-modal .achados-modal-close,.achados-modal-close{
+  background:linear-gradient(180deg,#ff7eb2 0%,#fc4695 100%) !important;
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.42) !important;
+  box-shadow:0 12px 26px rgba(252,70,149,.28),inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+.achados-modal .achados-modal-close *,.achados-modal-close *{color:#ffffff !important;stroke:#ffffff !important;fill:#ffffff !important;}
+
+/* === FIX DEFINITIVO: X do modal rosa com X branco === */
+.achados-modal .achados-modal-close,
+.achados-modal-close {
+  background: #fc4695 !important;
+  background-color: #fc4695 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: 0 12px 26px rgba(252,70,149,.35), inset 0 1px 0 rgba(255,255,255,.35) !important;
+}
+
+.achados-modal .achados-modal-close *,
+.achados-modal-close * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* COR FINAL DO BOTÃO DE FECHAR DO POPUP GLOBAL */
+.achados-modal .achados-modal-close,
+.achados-modal-close {
+  background: #fc4695 !important;
+  background-color: #fc4695 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.achados-modal .achados-modal-close *,
+.achados-modal-close * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+
+/* === LIMPEZA FINAL: remove qualquer verde do modal externo === */
+.achados-modal .achados-modal-dialog,
+.achados-modal-dialog {
+  border-color: #ffd3e4 !important;
+  box-shadow: 0 30px 80px rgba(79,42,58,.18), 0 2px 10px rgba(79,42,58,.08) !important;
+}
+
+.achados-modal .achados-modal-close,
+.achados-modal-close,
+.achados-modal.is-open .achados-modal-close {
+  background: #fc4695 !important;
+  background-color: #fc4695 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: 0 12px 26px rgba(252,70,149,.35), 0 0 18px rgba(252,70,149,.25) !important;
+}
+
+.achados-modal .achados-modal-close:hover,
+.achados-modal-close:hover,
+.achados-modal.is-open .achados-modal-close:hover {
+  background: #fc4695 !important;
+  background-color: #fc4695 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.achados-modal .achados-modal-close *,
+.achados-modal-close * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* === WHATSAPP VERDE — ÚNICO ELEMENTO QUE DEVE FICAR VERDE === */
+.btn-whatsapp,
+a.btn-whatsapp,
+.action-btn.btn-whatsapp {
+  background: rgba(0, 255, 136, 0.10) !important;
+  background-color: rgba(0, 255, 136, 0.10) !important;
+  color: #00ff88 !important;
+  border: 1px solid rgba(0, 255, 136, 0.25) !important;
+  box-shadow: none !important;
+}
+
+.btn-whatsapp i,
+a.btn-whatsapp i,
+.action-btn.btn-whatsapp i {
+  color: #00ff88 !important;
+}
+
+.btn-whatsapp:hover,
+a.btn-whatsapp:hover,
+.action-btn.btn-whatsapp:hover {
+  background: #00ff88 !important;
+  background-color: #00ff88 !important;
+  color: #ffffff !important;
+  border-color: #00ff88 !important;
+  box-shadow: 0 10px 24px rgba(0, 255, 136, 0.22) !important;
+}
+
+.btn-whatsapp:hover i,
+a.btn-whatsapp:hover i,
+.action-btn.btn-whatsapp:hover i {
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   DESIGN PROFISSIONAL DOS CARDS DE FÁBRICA
+   Mantém apenas o WhatsApp em verde e o Instagram em rosa.
+   ========================================================= */
+.factory-list {
+  gap: 18px !important;
+}
+
+.factory-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fffafd 100%) !important;
+  border: 1px solid rgba(252, 70, 149, 0.10) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(43, 32, 38, 0.08) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.factory-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, #fc4695 0%, #ff8fbc 55%, #ffd4e5 100%);
+  opacity: 0.95;
+}
+
+.factory-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(252, 70, 149, 0.22) !important;
+  box-shadow: 0 22px 50px rgba(43, 32, 38, 0.12) !important;
+}
+
+.card-body {
+  padding: 24px 22px 22px !important;
+}
+
+.card-header-row {
+  margin-bottom: 10px !important;
+}
+
+.header-left {
+  gap: 6px !important;
+}
+
+.factory-name {
+  color: #fc4695 !important;
+  font-size: 1.15rem !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.15 !important;
+  text-transform: uppercase !important;
+}
+
+.factory-code {
+  color: #5f5a60 !important;
+  font-size: 0.9rem !important;
+  font-weight: 650 !important;
+}
+
+.category-badge {
+  background: #f1f1f3 !important;
+  color: #5d5d63 !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  border-radius: 8px !important;
+  padding: 6px 13px !important;
+  font-size: 0.70rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.8px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85) !important;
+}
+
+.card-actions {
+  margin-top: 18px !important;
+  gap: 12px !important;
+}
+
+.action-btn {
+  min-height: 52px !important;
+  border-radius: 14px !important;
+  font-size: 0.98rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1px !important;
+  box-shadow: 0 8px 18px rgba(30, 20, 26, 0.05) !important;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease !important;
+}
+
+.action-btn i {
+  font-size: 1.03rem !important;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* WhatsApp — único verde do card */
+.btn-whatsapp,
+a.btn-whatsapp,
+.action-btn.btn-whatsapp {
+  background: #e9fff4 !important;
+  color: #00c86f !important;
+  border: 1px solid rgba(0, 200, 111, 0.20) !important;
+  box-shadow: 0 8px 18px rgba(0, 200, 111, 0.08) !important;
+}
+
+.btn-whatsapp i,
+a.btn-whatsapp i,
+.action-btn.btn-whatsapp i {
+  color: #00c86f !important;
+}
+
+.btn-whatsapp:hover,
+a.btn-whatsapp:hover,
+.action-btn.btn-whatsapp:hover {
+  background: #00c86f !important;
+  color: #ffffff !important;
+  border-color: #00c86f !important;
+  box-shadow: 0 12px 26px rgba(0, 200, 111, 0.24) !important;
+}
+
+.btn-whatsapp:hover i,
+a.btn-whatsapp:hover i,
+.action-btn.btn-whatsapp:hover i {
+  color: #ffffff !important;
+}
+
+/* Instagram — rosa premium */
+.btn-instagram,
+a.btn-instagram,
+.action-btn.btn-instagram {
+  background: #fff0f6 !important;
+  color: #d82d7e !important;
+  border: 1px solid rgba(216, 45, 126, 0.18) !important;
+  box-shadow: 0 8px 18px rgba(216, 45, 126, 0.07) !important;
+}
+
+.btn-instagram i,
+a.btn-instagram i,
+.action-btn.btn-instagram i {
+  color: #d82d7e !important;
+}
+
+.btn-instagram:hover,
+a.btn-instagram:hover,
+.action-btn.btn-instagram:hover {
+  background: #fc4695 !important;
+  color: #ffffff !important;
+  border-color: #fc4695 !important;
+  box-shadow: 0 12px 26px rgba(252, 70, 149, 0.24) !important;
+}
+
+.btn-instagram:hover i,
+a.btn-instagram:hover i,
+.action-btn.btn-instagram:hover i {
+  color: #ffffff !important;
+}
+
+@media (max-width: 480px) {
+  .card-body {
+    padding: 22px 20px 20px !important;
+  }
+
+  .factory-name {
+    font-size: 1.07rem !important;
+  }
+
+  .action-btn {
+    min-height: 50px !important;
+  }
+}

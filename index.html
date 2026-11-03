@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-category="FEMININA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Moda Feminina - Fábricas Preço de Custo</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilo Principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header Oficial -->
+    <header class="app-header">
+        <div class="logo-container">
+            <h1>Moda Feminina</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Search Bar -->
+            <div id="search-section" class="search-container">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="factory-search" placeholder="Buscar pelo nome ou código da fábrica..." inputmode="text">
+                </div>
+            </div>
+
+            <!-- Factory List -->
+            <div id="factory-list" class="factory-list">
+                <!-- Cards renderizados dinamicamente pelo script.js -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo" onclick="scrollToTop()">
+        <i class="fa-solid fa-arrow-up"></i>
+        <span>Voltar ao topo</span>
+    </button>
+
+    <!-- Dados Pré-Carregados Locais (138 Fábricas com WhatsApp e Instagram Reais) -->
+    <script src="feminina_data.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
