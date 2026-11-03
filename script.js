@@ -1,7 +1,7 @@
 // ===== Configuração =====
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRo3adt6sqyVdXcdexsAeXPC1SU7V4rsgXGaPZBjUc9CzAb1KH1xSxOo_Z2X6gGObRP4_i4H8c5nDM2/pub?gid=0&single=true&output=csv";
 const AUTO_REFRESH_MS = 120000;
-const CATEGORY_FILTER = "FEMININA";
+const CATEGORY_FILTER = document.documentElement.getAttribute("data-category") || "BARATINHAS";
 
 const factoryListElement = document.getElementById('factory-list');
 const searchInput = document.getElementById('factory-search');
