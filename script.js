@@ -1,7 +1,7 @@
 // ===== Configuração =====
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRo3adt6sqyVdXcdexsAeXPC1SU7V4rsgXGaPZBjUc9CzAb1KH1xSxOo_Z2X6gGObRP4_i4H8c5nDM2/pub?gid=0&single=true&output=csv";
 const AUTO_REFRESH_MS = 120000;
-const CATEGORY_FILTER = document.documentElement.getAttribute("data-category") || "BARATINHAS";
+const CATEGORY_FILTER = document.documentElement.getAttribute("data-category") || "";
 
 const factoryListElement = document.getElementById('factory-list');
 const searchInput = document.getElementById('factory-search');
@@ -37,6 +37,30 @@ function makeWhatsAppLink(value) {
   return `https://wa.me/${digits}`;
 }
 
+function parseCSVLine(text) {
+  const result = [];
+  let cell = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (char === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        cell += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      result.push(cell.trim());
+      cell = '';
+    } else {
+      cell += char;
+    }
+  }
+  result.push(cell.trim());
+  return result;
+}
+
 // ===== Fetch + Parse de Fábricas =====
 async function fetchFactories() {
   try {
@@ -57,12 +81,12 @@ async function fetchFactories() {
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim();
       if (!line) continue;
-      const row = line.split(',');
+      const row = parseCSVLine(line);
       const name = (row[0] || "").trim();
       if (!name) continue;
 
       const cat = (row[3] || "").trim();
-      if (!normalizeText(cat).includes(normalizeText(CATEGORY_FILTER))) continue;
+      if (CATEGORY_FILTER && !normalizeText(cat).includes(normalizeText(CATEGORY_FILTER))) continue;
 
       factories.push({
         name: name,
@@ -96,7 +120,8 @@ function renderFactories(searchQuery = '') {
     filtered = filtered.filter(f =>
       f.name.toLowerCase().includes(q) ||
       f.code.toLowerCase().includes(q) ||
-      (f.state && f.state.toLowerCase().includes(q))
+      (f.state && f.state.toLowerCase().includes(q)) ||
+      (f.category && f.category.toLowerCase().includes(q))
     );
   }
 
@@ -104,8 +129,8 @@ function renderFactories(searchQuery = '') {
     factoryListElement.innerHTML = `
       <div style="text-align: center; padding: 40px 20px; color: #999;">
         <i class="fa-solid fa-filter-circle-xmark" style="font-size: 3rem; margin-bottom: 16px; color: #ddd;"></i>
-        <p>Nenhuma fábrica encontrada.</p>
-        <p style="font-size: 0.85rem; margin-top: 8px;">Tente pesquisar com outro termo.</p>
+        <p>Nenhum fornecedor encontrado.</p>
+        <p style="font-size: 0.85rem; margin-top: 8px;">Tente pesquisar com outro termo ou código.</p>
       </div>
     `;
     return;
@@ -114,7 +139,7 @@ function renderFactories(searchQuery = '') {
   filtered.forEach((factory, index) => {
     const card = document.createElement('article');
     card.className = 'factory-card';
-    card.style.animationDelay = `${Math.min(index * 0.03, 0.4)}s`;
+    card.style.animationDelay = `${Math.min(index * 0.02, 0.4)}s`;
     card.classList.add('fade-in');
 
     let buttonsHtml = '';
@@ -134,6 +159,10 @@ function renderFactories(searchQuery = '') {
         </a>`;
     }
 
+    const badgeText = factory.category && factory.category !== '—' 
+      ? `${factory.state} • ${factory.category}`
+      : factory.state;
+
     card.innerHTML = `
       <div class="card-body">
         <div class="card-header-row">
@@ -143,7 +172,7 @@ function renderFactories(searchQuery = '') {
           </div>
         </div>
         
-        <span class="category-badge">${factory.state}</span>
+        <span class="category-badge">${badgeText}</span>
 
         <div class="card-actions" style="margin-top: 20px;">
           ${buttonsHtml}
